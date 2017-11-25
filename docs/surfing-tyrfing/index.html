@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta name="viewport" content="width=360,initial-scale=1">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -9,7 +10,6 @@
     })(window,document,'script','dataLayer','GTM-NB2Z2TL');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=1136,initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>SurfingTyring - game.gfb.io</title>
     
@@ -35,5 +35,24 @@
         <div class="title">SurfingTyring</div>
       </div>
     </div>
+
+    <script>
+      const doc = document.documentElement;
+      const content = document.querySelector('.webgl-content');
+      setInterval(function() {
+        const c = document.querySelector('canvas');
+        if (!c) { return }
+        if (doc.clientWidth <= c.clientWidth) {
+          const scale = doc.clientWidth / c.clientWidth;
+          content.style.transformOrigin = 'top left';
+          content.style.top = content.style.left = '0';
+          content.style.transform = 'scale(' + scale + ')';
+        } else {
+          content.style.transformOrigin = '';
+          content.style.top = content.style.left = '';
+          content.style.transform = '';
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
